@@ -10,6 +10,7 @@ A = np.array([[1.8, -0.9],
 powers = range(1, 201)
 top_left_values = [np.linalg.matrix_power(A, x)[0, 0] for x in powers]
 
+
 # Plot the results
 plt.figure(figsize=(12, 6))
 plt.plot(powers, top_left_values, label='Top-left entry of A^x')
@@ -20,3 +21,4 @@ plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.show()
+plt.savefig('matrix_power_plot.png')
