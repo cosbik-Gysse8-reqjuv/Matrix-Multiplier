@@ -1,6 +1,6 @@
 import numpy as np
 
-class MatrixOps:
+class MatOp:
     @staticmethod
     def add(A, B):
         """Add two matrices"""
@@ -42,18 +42,30 @@ class MatrixOps:
         return np.kron(A, B)
 
 
-# Example usage
-if __name__ == "__main__":
-    A = np.array([[1, 2], [3, 4]])
-    B = np.array([[0, 5], [6, 7]])
-
-    print("A:\n", A)
-    print("B:\n", B)
-
-    print("\nA + B:\n", MatrixOps.add(A, B))
-    print("\nA * B (matrix multiply):\n", MatrixOps.multiply(A, B))
-    print("\nA elementwise B:\n", MatrixOps.elementwise_multiply(A, B))
-    print("\nTranspose of A:\n", MatrixOps.transpose(A))
-    print("\nDeterminant of A:\n", MatrixOps.determinant(A))
-    print("\nInverse of A:\n", MatrixOps.inverse(A))
-    print("\nKronecker product of A and B:\n", MatrixOps.kronecker(A, B))
+A = np.array([[1.9, -0.9], [1, 0]])
+B = np.array([[1], [0]])
+I = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+AA = MatOp.kronecker(A, A)
+BB = MatOp.kronecker(B, B)
+invI = MatOp.inverse(MatOp.subtract(I, AA))
+Vecnull = MatOp.multiply(invI, BB)
+NullM = Vecnull.reshape(2, 2)
+OneM = MatOp.multiply(A, NullM)
+TwoM = MatOp.multiply(A, OneM)
+ThreeM = MatOp.multiply(A, TwoM)
+Null = NullM[0, 0]
+One = OneM[0, 0]
+Two = TwoM[0, 0]
+Three = ThreeM[0, 0]
+print("Variance:")
+print(Null)
+print("Autocovariances:")
+print(One)
+print(Two)
+print(Three)
+print("Autocorrelations:")
+print(One / Null)
+print(Two / Null)
+print(Three / Null)
+eigenvalues = np.linalg.eigvals(A)
+print("Eigenvalues:", eigenvalues)

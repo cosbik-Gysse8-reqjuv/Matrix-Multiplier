@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Define the matrix
-A = np.array([[1.85, 0.9],
+A = np.array([[1.85, -0.9],
               [1.0,  0.0]])
 
 # Compute A^x for x from 1 to 200 and collect top-left element (position [0, 0])
