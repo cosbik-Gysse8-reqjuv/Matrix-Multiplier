@@ -64,7 +64,7 @@ B = np.array([[0.84, -0.08],
 
 # Specify S matrices for two theta values
 theta1 = 0
-theta2 = 0.17985 
+theta2 = 0.1799 
 S1 = np.array([[5*np.cos(theta1), -5*np.sin(theta1)],
                [2.2*np.cos(theta1)+0.4*np.sin(theta1), -2.2*np.sin(theta1)+0.4*np.cos(theta1)]])
 S2 = np.array([[5*np.cos(theta2), -5*np.sin(theta2)],
